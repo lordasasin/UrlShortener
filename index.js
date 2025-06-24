@@ -52,7 +52,7 @@ async function mainMenu() {
 
         const existingUser = await User.findOne({ username });
         if (existingUser) {
-            console.log("Username already exists!");
+            console.log("Username already exists!!!!!!!");
         } else {
             const newUser = new User({ username, password, token });
             await newUser.save();
@@ -66,7 +66,7 @@ async function mainMenu() {
 
         const user = await User.findOne({ username });
         if (!user) {
-            console.log("User not found, please register!");
+            console.log("User not found, please register!!!!!");
             await mainMenu();
             return;
         }
@@ -112,7 +112,7 @@ async function mainMenu() {
                 await mainMenu();
                 break;
             } else {
-                console.log("Invalid choice!");
+                console.log("Wrong choice please try again!!!!");
             }
         }
 
@@ -125,11 +125,11 @@ async function mainMenu() {
         await mainMenu();
 
     } else if (choice === '4') {
-        console.log("Goodbye!");
+        console.log("Exiting");
         process.exit(0);
 
     } else {
-        console.log("Invalid choice!");
+        console.log("Wrong choice please try again!!!!");
         await mainMenu();
     }
 }
