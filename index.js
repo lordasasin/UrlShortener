@@ -2,6 +2,10 @@ const readline = require('readline-sync');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
+// You can register login and short URL in that code but if you want to start server and try that short URL you need to start server.js.
+
+
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_CONNECT)
