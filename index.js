@@ -127,7 +127,7 @@ async function mainMenu() {
                 }
             }
              else if (userChoice === '5') {
-                console.log("Logged out.");
+                console.log("Exiting");
                 await mainMenu();
                 break;
             } else {
