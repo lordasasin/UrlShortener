@@ -2,7 +2,6 @@ const readline = require('readline-sync');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_CONNECT)
@@ -31,13 +30,6 @@ function generateToken(length = 4) {
     }
     return token;
 }
-
-
-
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server running at PORT ${process.env.PORT || 3000}`);
-});
 
 async function mainMenu() {
     console.log("\n--- Welcome ---");   

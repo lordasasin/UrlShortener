@@ -9,7 +9,7 @@ const app = express();
 
 mongoose.connect(`${process.env.MONGO_CONNECT}`)
     .then(() => console.log("MongoDB connected"))
-    .catch(err => console.log("MongoDB connection error:", err));
+    .catch(err => console.log(err));
 
 const urlSchema = new mongoose.Schema({
     shortUrl: String,
