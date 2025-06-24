@@ -82,7 +82,9 @@ async function mainMenu() {
             console.log(`\n--- Hello, ${user.username} ---`);
             console.log("1 - Shorten URL");
             console.log("2 - Show My URLs");
-            console.log("3 - Logout");
+            console.log("3 - Show My Info");
+            console.log("4 - Change Password");
+            console.log("5 - Logout");
 
             const userChoice = readline.question("Choose: ");
 
@@ -107,7 +109,24 @@ async function mainMenu() {
                     });
                 }
 
-            } else if (userChoice === '3') {
+            }else if (userChoice === '3'){
+                console.log(`\n--- Your Info ---`);
+                console.log(`Username: ${user.username}`);
+                console.log(`Password: ${user.password}`);
+                console.log(`Token: ${user.token}\n`);
+            }
+            else if (userChoice === '4'){
+                const currentPassword = readline.question("Enter current password: ");
+                if (currentPassword !== user.password) {
+                    console.log("Wrong current password!!!!!!");
+                } else {
+                    const newPassword = readline.question("Enter new password: ");
+                    user.password = newPassword;
+                    await user.save();
+                    console.log("Password updated successfully!!!!!!!!!!!");
+                }
+            }
+             else if (userChoice === '5') {
                 console.log("Logged out.");
                 await mainMenu();
                 break;
