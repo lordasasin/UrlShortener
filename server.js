@@ -35,10 +35,10 @@ function generateToken(length = 20) {
 
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-    if (!username || !password) return res.status(400).json({ error: 'Username and password required' });
+    if (!username || !password) return res.status(400).json({ error: 'Username and password required!!!!!' });
 
     const existingUser = await User.findOne({ username });
-    if (existingUser) return res.status(400).json({ error: 'Username already exists' });
+    if (existingUser) return res.status(400).json({ error: 'Username already exists!!!!!' });
 
     const token = generateToken();
     const newUser = new User({ username, password, token });
@@ -49,12 +49,12 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    if (!username || !password) return res.status(400).json({ error: 'Username and password required' });
+    if (!username || !password) return res.status(400).json({ error: 'Username and password required!!!!!' });
 
     const user = await User.findOne({ username });
-    if (!user) return res.status(400).json({ error: 'User not found' });
+    if (!user) return res.status(400).json({ error: 'User not found!!!!!' });
 
-    if (user.password !== password) return res.status(400).json({ error: 'Wrong password' });
+    if (user.password !== password) return res.status(400).json({ error: 'Wrong password!!!!!' });
 
     res.json({ message: 'Login success', token: user.token });
 });
@@ -66,10 +66,10 @@ app.get('/list', async (req, res) => {
 
 app.get('/myurls/:token', async (req, res) => {
     const { token } = req.params;
-    if (!token) return res.status(401).json({ error: 'Token required in params' });
+    if (!token) return res.status(401).json({ error: 'Token required in params!!!!!' });
 
     const user = await User.findOne({ token });
-    if (!user) return res.status(401).json({ error: 'Invalid token' });
+    if (!user) return res.status(401).json({ error: 'Invalid token!!!!!' });
 
     const urls = await Url.find({ createdBy: user.username });
     res.json(urls);
@@ -77,11 +77,11 @@ app.get('/myurls/:token', async (req, res) => {
 
 app.post('/shorten', async (req, res) => {
     const { token, originalUrl } = req.body;
-    if (!token) return res.status(401).json({ error: 'Token required in body' });
-    if (!originalUrl) return res.status(400).json({ error: 'originalUrl required' });
+    if (!token) return res.status(401).json({ error: 'Token required in body!!!!!' });
+    if (!originalUrl) return res.status(400).json({ error: 'originalUrl required!!!!!' });
 
     const user = await User.findOne({ token });
-    if (!user) return res.status(401).json({ error: 'Invalid token' });
+    if (!user) return res.status(401).json({ error: 'Invalid token!!!!!' });
 
     const shortUrl = generateToken(6);
     const newUrl = new Url({
@@ -97,7 +97,7 @@ app.post('/shorten', async (req, res) => {
 app.get('/:shortUrl', async (req, res) => {
     const { shortUrl } = req.params;
     const url = await Url.findOne({ shortUrl });
-    if (!url) return res.status(404).json({ error: 'Short URL not found' });
+    if (!url) return res.status(404).json({ error: 'Short URL not found!!!!!' });
 
     res.redirect(url.originalUrl);
 });
