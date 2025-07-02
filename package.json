@@ -13,6 +13,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mongoose": "^8.16.0",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "router": "^2.2.0"
   }
 }
